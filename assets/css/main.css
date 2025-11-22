@@ -369,6 +369,8 @@ input, select, textarea {
 	#main {
 		height: 100%;
 		left: 0;
+		overflow-y: hidden;
+		padding: 2em 0 6em 0;
 		position: fixed;
 		text-align: center;
 		top: 0;
@@ -548,7 +550,8 @@ input, select, textarea {
 		opacity: 0;
 		position: relative;
 		text-align: center;
-		top: -1em;
+		top: 0;
+		margin-top: 3vh;
 		vertical-align: middle;
 		width: 90%;
 	}
@@ -700,7 +703,7 @@ input, select, textarea {
 					background: none;
 				}
 
-					#header nav a:active:before {
+				#header nav a:active:before {
 						background-color: rgba(255, 255, 255, 0.35);
 						color: #fff;
 					}
@@ -708,6 +711,290 @@ input, select, textarea {
 				#header nav a span {
 					display: none;
 				}
+
+		/* Enhanced content */
+
+		#header {
+			max-width: 980px;
+		}
+
+		#header .pill-row {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.5em;
+			margin: 0.85em 0 1.5em 0;
+		}
+
+		#header .pill {
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			border-radius: 999px;
+			font-size: 0.9em;
+			padding: 0.35em 0.9em;
+			white-space: nowrap;
+		}
+
+		#header .pill-available {
+			background: rgba(46, 204, 113, 0.2);
+			border-color: rgba(46, 204, 113, 0.65);
+		}
+
+		#header .pill-secondary {
+			background: rgba(52, 152, 219, 0.25);
+			border-color: rgba(52, 152, 219, 0.6);
+		}
+
+		#header .lede {
+			margin: 0.35em auto 0.9em auto;
+			max-width: 840px;
+			opacity: 0.9;
+			line-height: 1.6em;
+			font-size: 1.05em;
+		}
+
+		.card-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 1em;
+			margin: 0.35em 0 1em 0;
+			text-align: left;
+		}
+
+		.highlight-card {
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 14px;
+			padding: 1em;
+		}
+
+		.highlight-card h3 {
+			font-size: 1.1em;
+			margin-bottom: 0.25em;
+		}
+
+		.highlight-card p {
+			font-size: 0.95em;
+			line-height: 1.6em;
+			opacity: 0.85;
+		}
+
+		.tag-list {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.45em;
+			margin-top: 0.6em;
+		}
+
+		.tag-list li {
+			background: rgba(255, 255, 255, 0.12);
+			border-radius: 10px;
+			font-size: 0.85em;
+			padding: 0.25em 0.7em;
+		}
+
+		.cta-row {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 0.75em;
+			margin: 1.35em 0 0.5em 0;
+		}
+
+		.button {
+			-moz-transition: all 0.2s ease-in-out;
+			-webkit-transition: all 0.2s ease-in-out;
+			-ms-transition: all 0.2s ease-in-out;
+			transition: all 0.2s ease-in-out;
+			background: rgba(0, 0, 0, 0.25);
+			border: 1px solid rgba(255, 255, 255, 0.6);
+			border-radius: 10px;
+			color: #fff;
+			cursor: pointer;
+			display: inline-block;
+			font-size: 0.95em;
+			font-weight: 600;
+			padding: 0.65em 1.05em;
+		}
+
+		.button.primary {
+			background: #fff;
+			color: #1b1b1b;
+			border-color: #fff;
+		}
+
+		.button .icon {
+			margin-right: 0.35em;
+			font-size: 1em;
+			vertical-align: middle;
+		}
+
+		.button:hover {
+			transform: translateY(-1px);
+			background: rgba(255, 255, 255, 0.15);
+		}
+
+		.button.primary:hover {
+			background: #f2f2f2;
+		}
+
+		.button:active {
+			transform: translateY(0);
+			opacity: 0.9;
+		}
+
+		.copy-status {
+			min-height: 1.25em;
+			opacity: 0.8;
+			font-size: 0.95em;
+		}
+
+		.wins {
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 12px;
+			margin: 0.35em auto 1em auto;
+			max-width: 900px;
+			padding: 0.85em 1em;
+			text-align: left;
+		}
+
+		.wins h3 {
+			font-size: 1.05em;
+			margin-bottom: 0.4em;
+		}
+
+		.wins-list {
+			display: grid;
+			gap: 0.35em;
+		}
+
+		.wins-list li {
+			display: grid;
+			grid-template-columns: auto 1fr;
+			gap: 0.65em;
+			font-size: 0.95em;
+			line-height: 1.5em;
+		}
+
+		.wins-list .dot {
+			background: rgba(46, 204, 113, 0.9);
+			border-radius: 50%;
+			height: 0.55em;
+			margin-top: 0.4em;
+			width: 0.55em;
+		}
+
+		.case-study {
+			background: rgba(255, 255, 255, 0.07);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 12px;
+			margin: 0.5em auto 1em auto;
+			max-width: 960px;
+			padding: 1em 1.1em;
+			text-align: left;
+		}
+
+		.case-study h3 {
+			font-size: 1.1em;
+			margin-bottom: 0.4em;
+		}
+
+		.case-study p {
+			font-size: 0.95em;
+			line-height: 1.6em;
+			opacity: 0.9;
+		}
+
+		.stat-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 0.65em;
+			margin: 0.75em 0;
+		}
+
+		.stat {
+			background: rgba(0, 0, 0, 0.35);
+			border-radius: 10px;
+			padding: 0.75em;
+			text-align: center;
+		}
+
+		.stat-number {
+			font-size: 1.4em;
+			font-weight: 800;
+		}
+
+		.stat-label {
+			font-size: 0.85em;
+			opacity: 0.85;
+		}
+
+		.case-points {
+			display: grid;
+			gap: 0.35em;
+			margin-bottom: 0.5em;
+			font-size: 0.95em;
+			line-height: 1.5em;
+		}
+
+		.contact-card {
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 12px;
+			margin: 0 auto 1em auto;
+			max-width: 960px;
+			padding: 1em 1.1em;
+			text-align: left;
+		}
+
+		.contact-card h3 {
+			font-size: 1.05em;
+			margin-bottom: 0.25em;
+		}
+
+		.contact-card p {
+			font-size: 0.95em;
+			line-height: 1.5em;
+			opacity: 0.9;
+		}
+
+		.contact-card form {
+			margin-top: 0.6em;
+		}
+
+		.form-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 0.6em 0.75em;
+			margin-bottom: 0.5em;
+		}
+
+		.contact-card label {
+			display: grid;
+			gap: 0.25em;
+			font-size: 0.9em;
+		}
+
+		.contact-card input,
+		.contact-card textarea {
+			background: rgba(255, 255, 255, 0.08);
+			border: 1px solid rgba(255, 255, 255, 0.25);
+			border-radius: 10px;
+			color: #fff;
+			font: inherit;
+			padding: 0.55em 0.65em;
+			width: 100%;
+		}
+
+		.contact-card textarea {
+			resize: vertical;
+		}
+
+		.contact-card input:focus,
+		.contact-card textarea:focus {
+			outline: 1px solid rgba(255, 255, 255, 0.55);
+		}
 
 /* Footer */
 
@@ -976,6 +1263,11 @@ input, select, textarea {
 			width: 900px;
 		}
 
+		#main {
+			overflow-y: auto;
+			padding: 1.5em 0 7em 0;
+		}
+
 	/* Header */
 
 		#header h1 {
@@ -996,7 +1288,24 @@ input, select, textarea {
 
 			#header nav a:active {
 				font-size: 1em;
-			} }
+			}
+
+		.card-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.cta-row {
+			gap: 0.5em;
+		}
+
+		.button {
+			width: 100%;
+			text-align: center;
+		}
+
+		.wins {
+			padding: 0.75em 0.85em;
+		} }
 
 /* Mobile (Portrait) */
 

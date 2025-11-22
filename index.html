@@ -9,6 +9,12 @@
 		<title>Amit Kumar - DevOps Engineer</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-chrome-192x192.png" />
+		<link rel="icon" type="image/png" sizes="512x512" href="assets/favicon/android-chrome-512x512.png" />
+		<link rel="shortcut icon" href="assets/favicon/favicon.ico" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
@@ -16,16 +22,58 @@
 		<div id="wrapper">
 			<div id="bg"></div>
 			<div id="overlay"></div>
-			<div id="main">
+			<div id="main" aria-label="Portfolio hero">
 
 				<!-- Header -->
 					<header id="header">
 						<h1>Amit Kumar</h1>
 						<p>DevOps Engineer &nbsp;&bull;&nbsp; Cloud & Automation &nbsp;&bull;&nbsp; Your Infra Specialist</p>
+						<div class="pill-row">
+							<span class="pill pill-available">Open for DevOps Consultation</span>
+							<span class="pill pill-secondary">Remote-friendly</span>
+						</div>
+
+						<div class="cta-row">
+							<a class="button primary" href="https://calendly.com/hiamit-py" target="_blank" rel="noreferrer" aria-label="Schedule time with Amit">Book a call</a>
+							<button class="button ghost" id="copyEmail" type="button" data-email="hiamit.py@gmail.com">Copy email</button>
+							<a class="button ghost" href="resume.html">Open résumé</a>
+						</div>
+						<div id="copyStatus" class="copy-status" aria-live="polite"></div>
+
+						<div class="card-grid">
+							<article class="highlight-card">
+								<h3>Platform & IaC</h3>
+								<p>Multi-cloud foundations on Azure/AWS with Terraform modules, AKS/EKS builds, and secure connectivity via private/VPC endpoints.</p>
+								<ul class="tag-list">
+									<li>AKS / EKS</li>
+									<li>Terraform</li>
+									<li>Private endpoints</li>
+								</ul>
+							</article>
+							<article class="highlight-card">
+								<h3>Delivery</h3>
+								<p>Reusable GitHub Actions with ARC runners on K8s, branching standards, and ArgoCD releases for Backstage and services.</p>
+								<ul class="tag-list">
+									<li>GitHub Actions</li>
+									<li>ARC runners</li>
+									<li>ArgoCD / Helm</li>
+								</ul>
+							</article>
+							<article class="highlight-card">
+								<h3>Reliability</h3>
+								<p>Observability with Loki/Grafana/Tempo/Mimir, Kyverno policy and image signing, and cost-optimized monitoring stacks.</p>
+								<ul class="tag-list">
+									<li>Loki / Mimir</li>
+									<li>Grafana / Tempo</li>
+									<li>Kyverno</li>
+								</ul>
+							</article>
+						</div>
+
 						<nav>
 							<ul>
 								<li><a href="https://www.linkedin.com/in/aaamiiit/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-								<li><a href="https://github.com/aaamiiit7902" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="https://github.com/aaamiiit7902" class="icon brands fa-github"><span class="label">Github</span></a></li>
 								<li><a href="mailto:hiamit.py@gmail.com" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 							</ul>
 						</nav>
@@ -42,6 +90,58 @@
 			window.onload = function() { document.body.classList.remove('is-preload'); }
 			window.ontouchmove = function() { return false; }
 			window.onorientationchange = function() { document.body.scrollTop = 0; }
+			(function() {
+				const copyButton = document.getElementById('copyEmail');
+				const status = document.getElementById('copyStatus');
+				if (!copyButton || !status) return;
+
+				const email = copyButton.getAttribute('data-email');
+				const updateStatus = function(message, resetAfter) {
+					status.textContent = message;
+					if (resetAfter) {
+						window.setTimeout(function() { status.textContent = ''; }, resetAfter);
+					}
+				};
+				const fallbackCopy = function() {
+					const tempInput = document.createElement('textarea');
+					tempInput.value = email || '';
+					tempInput.setAttribute('readonly', '');
+					tempInput.style.position = 'absolute';
+					tempInput.style.left = '-9999px';
+					document.body.appendChild(tempInput);
+					tempInput.select();
+					tempInput.setSelectionRange(0, tempInput.value.length);
+					let copied = false;
+					try {
+						copied = document.execCommand('copy');
+					} catch (err) {
+						copied = false;
+					}
+					document.body.removeChild(tempInput);
+					if (copied) {
+						updateStatus('Copied to clipboard', 2400);
+					} else {
+						updateStatus('Copy not available, email me at ' + email, 3400);
+					}
+				};
+
+				copyButton.addEventListener('click', function() {
+					if (!email) return;
+
+					(async () => {
+						if (navigator.clipboard && navigator.clipboard.writeText) {
+							try {
+								await navigator.clipboard.writeText(email);
+								updateStatus('Copied to clipboard', 2400);
+								return;
+							} catch (err) {
+								// fall through to fallback
+							}
+						}
+						fallbackCopy();
+					})();
+				});
+			})();
 		</script>
 	</body>
 </html>
